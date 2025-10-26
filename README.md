@@ -39,24 +39,46 @@ A GitHub Actions-based bot that uses Blackbox API to automatically review Pull R
 
 ### Local Testing
 
-1. Set environment variables:
+1. Install dependencies:
    ```bash
-   export GITHUB_TOKEN=your_github_token
-   export BLACKBOX_API_KEY=your_blackbox_key
-   export BLACKBOX_API_URL=https://api.blackbox.ai/v1/completions
-   export GITHUB_REPOSITORY=your/repo
-   export GITHUB_EVENT_PATH=/path/to/mock/event.json  # Create a mock PR event JSON
+   pip install requests PyGithub
    ```
 
-2. Run the script:
+2. Run the test script:
    ```bash
-   python review_pr.py
+   python test_locally.py
    ```
+   This will simulate PR analysis with mock data and test error handling.
 
 ### GitHub Testing
 
-1. Create a PR in the repository where the workflow is set up.
-2. The bot will automatically post a review comment.
+1. Push this repository to GitHub or copy the files to an existing repo.
+2. Add the required secrets in repository settings.
+3. Create a PR in the repository.
+4. The bot will automatically trigger and post a review comment.
+
+### Sample Output
+
+The bot generates comments like:
+
+```
+## PR Review by Blackbox AI
+
+## Summary of Changes
+- Modified the `hello` function to print "Hello World" and return "done".
+
+## Potential Bugs or Issues
+- No obvious bugs, but ensure the return value is used appropriately.
+
+## Suggestions for Improvements
+- Consider adding type hints for better code quality.
+
+## Links to Relevant Documentation
+- Python Functions: https://docs.python.org/3/tutorial/controlflow.html#defining-functions
+
+## Overall Assessment
+This is a minor improvement. Approved with suggestions.
+```
 
 ## Customization
 
